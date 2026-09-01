@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud-Based File Storage and Sharing System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+          </svg>
+        </div>
+        <span class="logo-text">Cloud<span>Vault</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#security" class="nav-link">Security</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Sign In</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Secure <span>Cloud Storage</span> & Instant File Sharing</h1>
+        <p>
+          Store, organize, and share documents, images, PDFs, and archives seamlessly. 
+          Powered by high-performance Python Flask backend with Firebase Cloud Storage and Firestore security.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="signup.html" class="btn btn-primary btn-lg">
+            <span>Create Free Account</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="login.html" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08);">
+            Access Dashboard
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>99.9%</h3>
+            <p>Uptime Reliability</p>
+          </div>
+          <div class="stat-item">
+            <h3>256-bit</h3>
+            <p>End-to-End Encryption</p>
+          </div>
+          <div class="stat-item">
+            <h3>Instant</h3>
+            <p>Share Link Generation</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Cloud Preview Component -->
+      <div class="hero-visual">
+        <div class="cloud-card-preview">
+          <div class="preview-header">
+            <div class="preview-pills">
+              <span class="pill-dot dot-red"></span>
+              <span class="pill-dot dot-yellow"></span>
+              <span class="pill-dot dot-green"></span>
+            </div>
+            <span style="font-size: 0.8rem; color: #94a3b8; font-weight: 600;">CloudVault Sync Active</span>
+          </div>
+
+          <div class="preview-file-item">
+            <div class="file-icon-box icon-pdf">📄</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.9rem; font-weight: 600; color: white;">Annual_Financial_Report.pdf</div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">4.8 MB • PDF Document</div>
+            </div>
+            <span style="color: #34d399; font-size: 0.8rem; font-weight: 600;">Synced</span>
+          </div>
+
+          <div class="preview-file-item">
+            <div class="file-icon-box icon-img">🖼️</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.9rem; font-weight: 600; color: white;">Project_Mockups_HighRes.png</div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">12.4 MB • Image Asset</div>
+            </div>
+            <span style="color: #38bdf8; font-size: 0.8rem; font-weight: 600;">Shared</span>
+          </div>
+
+          <div class="preview-file-item">
+            <div class="file-icon-box icon-zip">📦</div>
+            <div style="flex: 1;">
+              <div style="font-size: 0.9rem; font-weight: 600; color: white;">SourceCode_Release_v2.0.zip</div>
+              <div style="font-size: 0.75rem; color: #94a3b8;">38.1 MB • Compressed</div>
+            </div>
+            <span style="color: #34d399; font-size: 0.8rem; font-weight: 600;">Synced</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Capabilities</span>
+        <h2 class="section-title">Built for Modern Cloud Productivity</h2>
+        <p class="section-desc">Experience frictionless file management with lightning speed, complete isolation, and intuitive tools.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <h3>Drag & Drop File Uploads</h3>
+          <p>Seamlessly drag documents, PDFs, videos, or archives from your desktop with live progress indicators.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+          </div>
+          <h3>One-Click Shareable Links</h3>
+          <p>Generate public links to collaborate with teammates or clients instantly with single-click clipboard copying.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3>Isolated User Security</h3>
+          <p>Strict access controls guarantee that only you have access to your private files and encrypted cloud folders.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3>Instant Search & Filter</h3>
+          <p>Locate files in milliseconds using real-time search by filename or filter by specific categories.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+              <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+            </svg>
+          </div>
+          <h3>Storage Analytics Meter</h3>
+          <p>Track your cloud storage consumption in real-time with visual category meters and quota breakdowns.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <h3>Multi-Format Compatibility</h3>
+          <p>Upload all file formats including PDF, Word docs, spreadsheets, PNG/JPEG images, audio, and archives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container cta-box">
+      <h2>Ready to Manage Your Cloud Files?</h2>
+      <p>Sign up now to start uploading and sharing your files securely in seconds.</p>
+      <a href="signup.html" class="btn btn-primary btn-lg">Create Free Account</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h4>CloudVault</h4>
+        <p>A modern full-stack cloud storage and sharing architecture built with Python Flask, Firebase Storage, and Firestore.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul class="footer-links">
+          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="login.html">Sign In</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Technologies</h5>
+        <ul class="footer-links">
+          <li><a href="#">Python & Flask</a></li>
+          <li><a href="#">Firebase Storage</a></li>
+          <li><a href="#">Cloud Firestore</a></li>
+          <li><a href="#">HTML5 & CSS3</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Security</h5>
+        <ul class="footer-links">
+          <li><a href="#">User Auth Isolation</a></li>
+          <li><a href="#">Encrypted Transfers</a></li>
+          <li><a href="#">Share Access Tokens</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Cloud-Based File Storage and Sharing System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

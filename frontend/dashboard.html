@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Cloud-Based File Storage System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body id="dashboard-root">
+
+  <!-- Dashboard Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="dashboard.html" class="logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+          </svg>
+        </div>
+        <span class="logo-text">Cloud<span>Vault</span></span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- User Profile Pill -->
+        <div style="display: flex; align-items: center; gap: 0.65rem; background: var(--bg-surface); padding: 0.35rem 0.85rem; border-radius: var(--radius-full); border: 1px solid var(--border-color);">
+          <span style="font-size: 1.1rem;">👤</span>
+          <div style="text-align: left; line-height: 1.2;">
+            <div id="user-display-name" style="font-weight: 700; font-size: 0.85rem; color: var(--text-main);">User</div>
+            <div id="user-display-email" style="font-size: 0.75rem; color: var(--text-muted);">user@example.com</div>
+          </div>
+        </div>
+
+        <!-- Logout Button -->
+        <button id="logout-btn" class="btn btn-outline btn-sm">
+          <span>Logout</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Content -->
+  <main class="container dashboard-page">
+
+    <!-- Header & Welcome -->
+    <div class="dashboard-header">
+      <div class="user-greeting">
+        <h1>Cloud Storage Hub</h1>
+        <p>Manage, upload, download, and share your personal encrypted files.</p>
+      </div>
+
+      <div class="dashboard-actions">
+        <button id="trigger-upload-btn" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span>Upload New File</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Storage Usage Analytics Section -->
+    <section class="storage-overview-grid">
+      <!-- Storage Consumption Meter -->
+      <div class="metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Storage Quota</span>
+          <span id="storage-file-count" class="format-badge" style="font-weight: 700; color: var(--primary);">0 Files</span>
+        </div>
+        <div id="storage-amount" class="storage-amount">0 B</div>
+        
+        <div class="storage-progress-bar">
+          <div id="storage-progress-fill" class="storage-progress-fill"></div>
+        </div>
+        <div class="storage-limits">
+          <span>Used</span>
+          <span>100 MB Free Tier</span>
+        </div>
+      </div>
+
+      <!-- Category Breakdown Quick Filters -->
+      <div class="metric-card" style="display: flex; flex-direction: column; justify-content: center;">
+        <div class="metric-header" style="margin-bottom: 0.75rem;">
+          <span class="metric-title">File Types Breakdown</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Click to filter</span>
+        </div>
+        <div class="category-badges">
+          <div class="category-chip" data-category="pdf">
+            <div class="category-chip-header">
+              <span class="chip-name">PDFs</span>
+              <span class="chip-icon">📄</span>
+            </div>
+            <div id="count-pdf" class="chip-count">0</div>
+          </div>
+
+          <div class="category-chip" data-category="image">
+            <div class="category-chip-header">
+              <span class="chip-name">Images</span>
+              <span class="chip-icon">🖼️</span>
+            </div>
+            <div id="count-image" class="chip-count">0</div>
+          </div>
+
+          <div class="category-chip" data-category="document">
+            <div class="category-chip-header">
+              <span class="chip-name">Docs</span>
+              <span class="chip-icon">📝</span>
+            </div>
+            <div id="count-doc" class="chip-count">0</div>
+          </div>
+
+          <div class="category-chip" data-category="archive">
+            <div class="category-chip-header">
+              <span class="chip-name">Archives</span>
+              <span class="chip-icon">📦</span>
+            </div>
+            <div id="count-zip" class="chip-count">0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drag & Drop Upload Zone -->
+    <section class="upload-section">
+      <div id="drop-zone" class="drop-zone">
+        <input type="file" id="file-input" style="display: none;">
+        <div class="drop-zone-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+        </div>
+        <h3>Drag & Drop Files Here</h3>
+        <p>or click anywhere in this area to browse from your computer</p>
+        <div class="drop-zone-formats">
+          <span class="format-badge">PDF</span>
+          <span class="format-badge">DOC / DOCX</span>
+          <span class="format-badge">PNG / JPG / WEBP</span>
+          <span class="format-badge">ZIP / TAR</span>
+          <span class="format-badge">Max 50 MB</span>
+        </div>
+      </div>
+
+      <!-- Live Upload Progress Bar -->
+      <div id="upload-progress-container" class="upload-progress-container">
+        <div class="progress-header">
+          <span id="progress-filename" class="progress-filename">Uploading...</span>
+          <span id="progress-percent" class="progress-percent">0%</span>
+        </div>
+        <div class="upload-bar-track">
+          <div id="upload-bar-fill" class="upload-bar-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Files Explorer Section -->
+    <section class="explorer-section">
+      <div class="explorer-header">
+        <h2 class="explorer-title">My Cloud Files</h2>
+
+        <div class="explorer-controls">
+          <!-- Live Search Bar -->
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="file-search-input" class="search-input" placeholder="Search files by name...">
+          </div>
+
+          <!-- Sort Select -->
+          <select id="file-sort-select" class="select-filter">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="name-asc">Name (A - Z)</option>
+            <option value="name-desc">Name (Z - A)</option>
+            <option value="size-desc">Size (Large - Small)</option>
+            <option value="size-asc">Size (Small - Large)</option>
+          </select>
+
+          <!-- View Mode Toggle (Grid vs Table) -->
+          <div class="view-toggle-btns">
+            <button id="view-grid-btn" class="view-btn active" title="Grid View">⊞ Grid</button>
+            <button id="view-table-btn" class="view-btn" title="Table View">☰ List</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Files Grid View Container -->
+      <div id="files-grid-container" class="files-grid">
+        <!-- Dynamically rendered file cards -->
+      </div>
+
+      <!-- Files Table View Container -->
+      <div id="files-table-wrapper" class="files-table-wrapper">
+        <table class="files-table">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th>Category</th>
+              <th>Size</th>
+              <th>Uploaded Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="files-table-body">
+            <!-- Dynamically rendered file rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State Indicator -->
+      <div id="empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon">📁</div>
+        <h3>No files found</h3>
+        <p>Upload your first file using the upload box above, or adjust your search filter.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Share File Modal -->
+  <div id="share-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Share File</h3>
+        <span class="modal-close-btn">&times;</span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Anyone with this link can view and download <strong id="share-modal-filename" style="color: var(--text-main);"></strong>.
+      </p>
+
+      <div class="share-link-input-group">
+        <input type="text" id="share-link-input" class="share-link-input" readonly>
+        <button id="copy-share-btn" class="btn btn-primary btn-sm">Copy Link</button>
+      </div>
+
+      <div style="text-align: right; margin-top: 1.5rem;">
+        <button class="btn btn-outline btn-cancel btn-sm">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete File Confirmation Modal -->
+  <div id="delete-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: var(--danger);">Delete File</h3>
+        <span class="modal-close-btn">&times;</span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Are you sure you want to permanently delete <strong id="delete-modal-filename" style="color: var(--text-main);"></strong>? This action cannot be undone.
+      </p>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button class="btn btn-outline btn-cancel btn-sm">Cancel</button>
+        <button id="confirm-delete-btn" class="btn btn-danger btn-sm">Delete Permanently</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

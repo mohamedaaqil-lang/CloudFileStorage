@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Environment variables & credentials
+.env
+*.env
+*.pem
+*.key
+firebase_credentials*.json
+firebase-adminsdk*.json
+serviceAccountKey*.json
+
+# SQLite databases & logs
+backend/data/*.sqlite
+backend/data/*.db
+*.sqlite3
+*.log
+
+# Uploaded test files
+backend/uploads/users/*
+!backend/uploads/users/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
+!backend/uploads/users/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
